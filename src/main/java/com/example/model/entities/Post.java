@@ -1,28 +1,30 @@
 package com.example.model.entities;
 
+
 import jakarta.persistence.*;
 
-import java.io.Serializable;
-
 @Entity
-@Table(name = "tb_posts")
-public class Post implements Serializable {
+@Table(name = "posts")
+public class Post {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 100)
-    private String name;
+    @Column(name = "title", nullable = false)
+    private String title;
 
-    private String desc;
+    @Column(name = "content", nullable = false, columnDefinition = "TEXT")
+    private String content;
+
+    // Constructors, getters, and setters ...
 
     public Post() {
     }
 
-    public Post(String name, String desc) {
-        this.name = name;
-        this.desc = desc;
+    public Post(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 
     public Long getId() {
@@ -33,20 +35,19 @@ public class Post implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getContent() {
+        return content;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setContent(String content) {
+        this.content = content;
     }
-
 }
