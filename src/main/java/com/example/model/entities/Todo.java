@@ -4,8 +4,8 @@ package com.example.model.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "posts")
-public class Post {
+@Table(name = "todos")
+public class Todo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,10 +19,10 @@ public class Post {
 
     // Constructors, getters, and setters ...
 
-    public Post() {
+    public Todo() {
     }
 
-    public Post(String title, String content) {
+    public Todo(String title, String content) {
         this.title = title;
         this.content = content;
     }
