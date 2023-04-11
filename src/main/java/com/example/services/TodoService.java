@@ -15,4 +15,8 @@ public class TodoService {
     public Iterable<Todo> findAll() {
         return todoRepository.findAll();
     }
+
+    public Todo findById(Long id) {
+        return todoRepository.findById(id).get();
+    }
 }
