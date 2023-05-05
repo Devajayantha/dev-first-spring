@@ -16,13 +16,19 @@ public class TodoApiController {
         return todoService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public Todo show(@PathVariable Long id) {
-        return todoService.findById(id);
-    }
-
     @PostMapping()
     public Todo store(@RequestBody Todo todo) {
         return todoService.create(todo);
+    }
+
+    @GetMapping("/search")
+    public Iterable<Todo> search(@RequestParam String title) {
+        System.out.println(title);
+        return todoService.findByTitle(title);
+    }
+
+    @GetMapping("/{id}")
+    public Todo show(@PathVariable Long id) {
+        return todoService.findById(id);
     }
 }

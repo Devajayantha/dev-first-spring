@@ -6,6 +6,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class TodoService {
@@ -22,5 +24,9 @@ public class TodoService {
 
     public Todo create(Todo todo) {
         return todoRepository.save(todo);
+    }
+
+    public List<Todo> findByTitle(String title){
+        return todoRepository.findByTitleContains(title);
     }
 }
