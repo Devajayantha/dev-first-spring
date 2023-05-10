@@ -18,7 +18,7 @@ public class TodoApiController {
 
     @PostMapping()
     public Todo store(@RequestBody Todo todo) {
-        return todoService.create(todo);
+        return todoService.save(todo);
     }
 
     @GetMapping("/search")
@@ -30,5 +30,16 @@ public class TodoApiController {
     @GetMapping("/{id}")
     public Todo show(@PathVariable Long id) {
         return todoService.findById(id);
+    }
+
+    @PatchMapping("/{id}")
+    public Todo update(@RequestBody Todo todo) {
+        return todoService.save(todo);
+    }
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable Long id) {
+        todoService.deleteById(id);
+
+        return String.format("Deleted todo with id: %d", id);
     }
 }
