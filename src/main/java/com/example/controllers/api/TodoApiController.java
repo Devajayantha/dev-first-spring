@@ -32,9 +32,14 @@ public class TodoApiController {
     }
 
     @GetMapping("/search")
-    public Iterable<Todo> search(@RequestParam String title) {
-        System.out.println(title);
-        return todoService.findByTitle(title);
+    public ResponseEntity<List<Todo>>  search(@RequestParam String title) {
+        List<Todo> todos = todoService.findByTitle(title);
+
+        if (todos.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<>(todos, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
