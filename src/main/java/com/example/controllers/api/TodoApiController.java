@@ -16,8 +16,14 @@ public class TodoApiController {
     private TodoService todoService;
 
     @GetMapping()
-    public ResponseEntity<List<Todo>> index() {
-        List<Todo> todos = todoService.findAll();
+    public ResponseEntity<List<Todo>> index(@RequestParam(required = false) String title) {
+        List<Todo> todos;
+
+        if (title != null) {
+            todos = todoService.findByTitle(title);
+        } else {
+            todos = todoService.findAll();
+        }
 
         if (todos.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
