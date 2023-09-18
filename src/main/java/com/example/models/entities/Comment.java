@@ -41,6 +41,10 @@ public class Comment {
         this.author = author;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "todo_id")
+    private Todo todo;
+
     // Getters and setters ...
 
     public Long getId() {
