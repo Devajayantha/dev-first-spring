@@ -3,9 +3,6 @@ package com.example.models.entities;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Table(name = "todos")
 public class Todo {
@@ -20,8 +17,6 @@ public class Todo {
     @Column(name = "content", nullable = false, columnDefinition = "TEXT")
     private String content;
 
-    // Constructors, getters, and setters ...
-
     public Todo() {
     }
 
@@ -29,9 +24,6 @@ public class Todo {
         this.title = title;
         this.content = content;
     }
-
-    @OneToMany(mappedBy = "todo", cascade = CascadeType.ALL)
-    public List<Comment> comments = new ArrayList<>();
 
     public Long getId() {
         return id;
