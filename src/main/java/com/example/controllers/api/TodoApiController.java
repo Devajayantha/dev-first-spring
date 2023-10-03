@@ -37,23 +37,12 @@ public class TodoApiController {
         return todoService.save(todo);
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<List<Todo>>  search(@RequestParam String title) {
-        List<Todo> todos = todoService.findByTitle(title);
-
-        if (todos.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
-        return new ResponseEntity<>(todos, HttpStatus.OK);
-    }
-
     @GetMapping("/{id}")
     public Todo show(@PathVariable Long id) {
         return todoService.findById(id);
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping()
     public Todo update(@RequestBody Todo todo) {
         return todoService.save(todo);
     }
